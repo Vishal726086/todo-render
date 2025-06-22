@@ -13,10 +13,10 @@ SECRET_KEY = 'django-insecure-$05%k_=k-90ns@fm$#(xx3rmf*isguog9vri5m)9sxy%0442&w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['todoproject-production-4c47.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
-    'todoproject-production-4c47.up.railway.app',
+    'https://todoproject-production-4c47.up.railway.app',
 ]
 
 ALLOWED_HOSTS = [
