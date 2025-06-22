@@ -15,6 +15,19 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'todoproject-production-4c47.up.railway.app',
+]
+
+ALLOWED_HOSTS = [
+    'todoproject-production-4c47.up.railway.app',
+    'localhost',
+    '127.0.0.1'
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
