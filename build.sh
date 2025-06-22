@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo "Running migrations..."
-python manage.py makemigrations
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
 python manage.py migrate
 
-echo "Collecting static files..."
+# Collect static files (important for production)
 python manage.py collectstatic --noinput
