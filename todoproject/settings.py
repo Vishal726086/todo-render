@@ -11,7 +11,7 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$05%k_=k-90ns@fm$#(xx3rmf*isguog9vri5m)9sxy%0442&w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['todoproject-production-4c47.up.railway.app']
 
@@ -73,10 +73,27 @@ WSGI_APPLICATION = 'todoproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-}
+DATABASES = {}
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    # ✅ Production: Use PostgreSQL from Railway or other platform
+    DATABASES['default'] = dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=True
+    )
+else:
+    # ✅ Local: Use your local PostgreSQL or fallback SQLite
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'todo_database',
+        'USER': 'vishalanand',
+        'PASSWORD': 'vishalanand11',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 
 
 
