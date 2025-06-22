@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import dj_database_url 
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -65,15 +66,9 @@ WSGI_APPLICATION = 'todoproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todo_database',
-        'USER': 'vishalanand',
-        'PASSWORD': 'vishalanand11',
-        'HOST': 'localhost',
-        'PORT': '5432',  # default
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+
 
 
 
