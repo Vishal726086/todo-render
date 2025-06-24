@@ -3,13 +3,15 @@ from pathlib import Path
 import os, dj_database_url, pathlib
 from dotenv import load_dotenv
 
+load_dotenv()
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$05%k_=k-90ns@fm$#(xx3rmf*isguog9vri5m)9sxy%0442&w'
+# SECRET_KEY ='django-insecure-$05%k_=k-90ns@fm$#(xx3rmf*isguog9vri5m)9sxy%0442&w'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-$05%k_=k-90ns@fm$#(xx3rmf*isguog9vri5m)9sxy%0442&w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,11 +83,6 @@ DATABASES = {
         ssl_require=not os.environ.get("DEBUG", "True") == "True"  # disable SSL locally
     )
 }
-
-load_dotenv()
-
-DATABASE_URL = postgresql://${{PGUSER}}:${{POSTGRES_PASSWORD}}@${{RAILWAY_PRIVATE_DOMAIN}}:5432/${{PGDATABASE}}
-SECRET_KEY = 'C7_s5FvG4saC2hNPJvJr8b4K6RUyqR4A'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
